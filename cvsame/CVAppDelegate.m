@@ -7,6 +7,7 @@
 //
 
 #import "CVAppDelegate.h"
+#import "CVBoardViewController.h"
 
 @implementation CVAppDelegate
 
@@ -14,6 +15,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    CVBoardViewController *board = [[CVBoardViewController alloc] init];
+    self.window.rootViewController = board;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

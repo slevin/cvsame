@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49E6B052DFE44D7D9898D143 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46DA3BEA8234443911709CB /* libPods.a */; };
 		73CEE87517E00B25005B4BCE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CEE87417E00B25005B4BCE /* UIKit.framework */; };
 		73CEE87717E00B25005B4BCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CEE87617E00B25005B4BCE /* Foundation.framework */; };
 		73CEE87917E00B25005B4BCE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CEE87817E00B25005B4BCE /* CoreGraphics.framework */; };
@@ -21,6 +22,12 @@
 		73CEE89517E00B25005B4BCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CEE87617E00B25005B4BCE /* Foundation.framework */; };
 		73CEE89D17E00B25005B4BCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE89B17E00B25005B4BCE /* InfoPlist.strings */; };
 		73CEE8A017E00B25005B4BCE /* cvsameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE89F17E00B25005B4BCE /* cvsameTests.m */; };
+		73CEE8AB17E01173005B4BCE /* CVDood.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE8AA17E01173005B4BCE /* CVDood.m */; };
+		73CEE8AE17E01316005B4BCE /* CVDoodSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE8AD17E01316005B4BCE /* CVDoodSet.m */; };
+		73CEE8B217E01350005B4BCE /* CVBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE8B017E01350005B4BCE /* CVBoardViewController.m */; };
+		73CEE8B317E01350005B4BCE /* CVBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8B117E01350005B4BCE /* CVBoardViewController.xib */; };
+		73CEE8B517E01477005B4BCE /* CVDoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8B417E01477005B4BCE /* CVDoodCell.xib */; };
+		73CEE8B817E014EB005B4BCE /* CVBoardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE8B717E014EB005B4BCE /* CVBoardLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		467EE93C356B4D8CB4B4B7A0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		73CEE87117E00B25005B4BCE /* cvsame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cvsame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CEE87417E00B25005B4BCE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		73CEE87617E00B25005B4BCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +61,17 @@
 		73CEE89C17E00B25005B4BCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		73CEE89E17E00B25005B4BCE /* cvsameTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cvsameTests.h; sourceTree = "<group>"; };
 		73CEE89F17E00B25005B4BCE /* cvsameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cvsameTests.m; sourceTree = "<group>"; };
+		73CEE8A917E01173005B4BCE /* CVDood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDood.h; sourceTree = "<group>"; };
+		73CEE8AA17E01173005B4BCE /* CVDood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDood.m; sourceTree = "<group>"; };
+		73CEE8AC17E01316005B4BCE /* CVDoodSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDoodSet.h; sourceTree = "<group>"; };
+		73CEE8AD17E01316005B4BCE /* CVDoodSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDoodSet.m; sourceTree = "<group>"; };
+		73CEE8AF17E01350005B4BCE /* CVBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVBoardViewController.h; sourceTree = "<group>"; };
+		73CEE8B017E01350005B4BCE /* CVBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVBoardViewController.m; sourceTree = "<group>"; };
+		73CEE8B117E01350005B4BCE /* CVBoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVBoardViewController.xib; sourceTree = "<group>"; };
+		73CEE8B417E01477005B4BCE /* CVDoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDoodCell.xib; sourceTree = "<group>"; };
+		73CEE8B617E014EB005B4BCE /* CVBoardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVBoardLayout.h; sourceTree = "<group>"; };
+		73CEE8B717E014EB005B4BCE /* CVBoardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVBoardLayout.m; sourceTree = "<group>"; };
+		D46DA3BEA8234443911709CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +82,7 @@
 				73CEE87517E00B25005B4BCE /* UIKit.framework in Frameworks */,
 				73CEE87717E00B25005B4BCE /* Foundation.framework in Frameworks */,
 				73CEE87917E00B25005B4BCE /* CoreGraphics.framework in Frameworks */,
+				49E6B052DFE44D7D9898D143 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +106,7 @@
 				73CEE89817E00B25005B4BCE /* cvsameTests */,
 				73CEE87317E00B25005B4BCE /* Frameworks */,
 				73CEE87217E00B25005B4BCE /* Products */,
+				467EE93C356B4D8CB4B4B7A0 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +126,7 @@
 				73CEE87617E00B25005B4BCE /* Foundation.framework */,
 				73CEE87817E00B25005B4BCE /* CoreGraphics.framework */,
 				73CEE89217E00B25005B4BCE /* SenTestingKit.framework */,
+				D46DA3BEA8234443911709CB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,9 +134,19 @@
 		73CEE87A17E00B25005B4BCE /* cvsame */ = {
 			isa = PBXGroup;
 			children = (
+				73CEE8A917E01173005B4BCE /* CVDood.h */,
+				73CEE8AA17E01173005B4BCE /* CVDood.m */,
 				73CEE88317E00B25005B4BCE /* CVAppDelegate.h */,
 				73CEE88417E00B25005B4BCE /* CVAppDelegate.m */,
+				73CEE8AC17E01316005B4BCE /* CVDoodSet.h */,
+				73CEE8AD17E01316005B4BCE /* CVDoodSet.m */,
 				73CEE87B17E00B25005B4BCE /* Supporting Files */,
+				73CEE8AF17E01350005B4BCE /* CVBoardViewController.h */,
+				73CEE8B017E01350005B4BCE /* CVBoardViewController.m */,
+				73CEE8B117E01350005B4BCE /* CVBoardViewController.xib */,
+				73CEE8B417E01477005B4BCE /* CVDoodCell.xib */,
+				73CEE8B617E014EB005B4BCE /* CVBoardLayout.h */,
+				73CEE8B717E014EB005B4BCE /* CVBoardLayout.m */,
 			);
 			path = cvsame;
 			sourceTree = "<group>";
@@ -159,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73CEE8A317E00B25005B4BCE /* Build configuration list for PBXNativeTarget "cvsame" */;
 			buildPhases = (
+				9BE82B62ECDF44C593C2D9DA /* Check Pods Manifest.lock */,
 				73CEE86D17E00B25005B4BCE /* Sources */,
 				73CEE86E17E00B25005B4BCE /* Frameworks */,
 				73CEE86F17E00B25005B4BCE /* Resources */,
+				97EBC8C174104D8BA19A60C4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,6 +262,8 @@
 				73CEE88717E00B25005B4BCE /* Default.png in Resources */,
 				73CEE88917E00B25005B4BCE /* Default@2x.png in Resources */,
 				73CEE88B17E00B25005B4BCE /* Default-568h@2x.png in Resources */,
+				73CEE8B317E01350005B4BCE /* CVBoardViewController.xib in Resources */,
+				73CEE8B517E01477005B4BCE /* CVDoodCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +291,36 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		97EBC8C174104D8BA19A60C4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BE82B62ECDF44C593C2D9DA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -264,6 +330,10 @@
 			files = (
 				73CEE88117E00B25005B4BCE /* main.m in Sources */,
 				73CEE88517E00B25005B4BCE /* CVAppDelegate.m in Sources */,
+				73CEE8AB17E01173005B4BCE /* CVDood.m in Sources */,
+				73CEE8AE17E01316005B4BCE /* CVDoodSet.m in Sources */,
+				73CEE8B217E01350005B4BCE /* CVBoardViewController.m in Sources */,
+				73CEE8B817E014EB005B4BCE /* CVBoardLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +433,7 @@
 		};
 		73CEE8A417E00B25005B4BCE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 467EE93C356B4D8CB4B4B7A0 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cvsame/cvsame-Prefix.pch";
@@ -374,6 +445,7 @@
 		};
 		73CEE8A517E00B25005B4BCE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 467EE93C356B4D8CB4B4B7A0 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cvsame/cvsame-Prefix.pch";
@@ -436,6 +508,7 @@
 				73CEE8A517E00B25005B4BCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73CEE8A617E00B25005B4BCE /* Build configuration list for PBXNativeTarget "cvsameTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +517,7 @@
 				73CEE8A817E00B25005B4BCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
