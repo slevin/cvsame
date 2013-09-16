@@ -170,7 +170,11 @@
 }
 
 - (void)removeDeletedDoods {
+    // objects collapse down
+    // and over to the left (if the column is empty)
+    
     NSMutableArray *newColumns = [NSMutableArray new];
+    NSMutableIndexSet *emptyColumns = [NSMutableIndexSet new];
     [self.columns enumerateObjectsUsingBlock:^(NSArray *col, NSUInteger colIdx, BOOL *stop) {
         NSMutableIndexSet *indexSet = [NSMutableIndexSet new];
         [col enumerateObjectsUsingBlock:^(CVDood *dood, NSUInteger rowIdx, BOOL *stop) {
@@ -181,10 +185,14 @@
         NSMutableArray *newCol = [col mutableCopy];
         [newCol removeObjectsAtIndexes:indexSet];
         [newColumns addObject:newCol];
+        if (newCol.count == 0) {
+            [emptyColumns addIndex:colIdx];
+        }
     }];
+
+    [newColumns removeObjectsAtIndexes:emptyColumns];
     self.columns = newColumns;
     
-    // remove any columns that are empty now as well (right?)
 }
 
 - (NSArray*)neighborsOfColumnRow:(CVColumnRow*)aColumnRow {
