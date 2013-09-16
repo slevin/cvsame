@@ -8,6 +8,15 @@
 
 #import "MTLModel.h"
 
+@interface CVColumnRow : NSObject
+
+@property (nonatomic, assign) NSInteger column;
+@property (nonatomic, assign) NSInteger row;
+
++ (instancetype)columnRowWithColumn:(NSInteger)aColumn row:(NSInteger)aRow;
+
+@end
+
 @class CVDood;
 
 @interface CVDoodSet : MTLModel
@@ -24,5 +33,10 @@
 - (NSIndexPath*)indexPathForDoodAtColumn:(NSInteger)aColumn row:(NSInteger)aRow;
 - (void)columnRowForDoodAtIndexPath:(NSIndexPath*)anIndexPath outColumn:(NSInteger*)aColumn outRow:(NSInteger*)aRow;
 - (CVDood*)doodForIndexPath:(NSIndexPath*)anIndexPath;
+
+/// deleting actions
+- (NSInteger)tryRemoveAtIndexPath:(NSIndexPath*)anIndexPath;
+- (NSArray*)indexPathsOfDeletedDoods;
+- (void)removeDeletedDoods;
 
 @end

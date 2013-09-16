@@ -9,9 +9,22 @@
 #import "CVDoodSet.h"
 #import "CVDood.h"
 
+
+@implementation CVColumnRow
+
++ (instancetype)columnRowWithColumn:(NSInteger)aColumn row:(NSInteger)aRow {
+    CVColumnRow *cr = [CVColumnRow new];
+    cr.column = aColumn;
+    cr.row = aRow;
+    return cr;
+}
+
+@end
+
 @interface CVDoodSet ()
 
 @property (nonatomic, strong) NSArray *columns;
+@property (nonatomic, assign) NSInteger deleteCount;
 
 @end
 
@@ -111,6 +124,90 @@
             count -= col.count;
         }
     }];
+}
+
+- (void)clearAllDoodStates {
+    [self enumerateDoods:^(CVDood *dood, NSInteger column, NSInteger row) {
+        dood.doodState = kCVDoodNormal;
+    }];
+    self.deleteCount = 0;
+}
+
+- (NSInteger)tryRemoveAtIndexPath:(NSIndexPath*)anIndexPath {
+    NSInteger column, row;
+    [self columnRowForDoodAtIndexPath:anIndexPath outColumn:&column outRow:&row];
+    CVColumnRow *colRow = [CVColumnRow columnRowWithColumn:column row:row];
+    [self clearAllDoodStates];
+    [self tryRemoveAtColumnRow:colRow];
+    return self.deleteCount;
+}
+
+- (void)tryRemoveAtColumnRow:(CVColumnRow*)aColumnRow {
+    CVDood *thisDood = self.columns[aColumnRow.column][aColumnRow.row];
+    thisDood.doodState = kCVDoodDelete;
+    self.deleteCount += 1;
+    NSArray *neighbors = [self neighborsOfColumnRow:aColumnRow];
+    for (CVColumnRow *colRow in neighbors) {
+        CVDood *thatDood = self.columns[colRow.column][colRow.row];
+        if (thatDood.doodState == kCVDoodNormal && thatDood.doodType == thisDood.doodType) {
+            [self tryRemoveAtColumnRow:colRow];
+        }
+    }
+}
+
+- (NSArray*)indexPathsOfDeletedDoods {
+    NSMutableArray *array = [NSMutableArray new];
+    __block NSInteger item = 0;
+    [self.columns enumerateObjectsUsingBlock:^(NSArray *col, NSUInteger colIdx, BOOL *stop) {
+        [col enumerateObjectsUsingBlock:^(CVDood *dood, NSUInteger rowIdx, BOOL *stop) {
+            if (dood.doodState == kCVDoodDelete) {
+                [array addObject:[NSIndexPath indexPathForItem:item inSection:0]];
+            }
+            item++;
+        }];
+    }];
+    return [array copy];
+}
+
+- (void)removeDeletedDoods {
+    NSMutableArray *newColumns = [NSMutableArray new];
+    [self.columns enumerateObjectsUsingBlock:^(NSArray *col, NSUInteger colIdx, BOOL *stop) {
+        NSMutableIndexSet *indexSet = [NSMutableIndexSet new];
+        [col enumerateObjectsUsingBlock:^(CVDood *dood, NSUInteger rowIdx, BOOL *stop) {
+            if (dood.doodState == kCVDoodDelete) {
+                [indexSet addIndex:rowIdx];
+            }
+        }];
+        NSMutableArray *newCol = [col mutableCopy];
+        [newCol removeObjectsAtIndexes:indexSet];
+        [newColumns addObject:newCol];
+    }];
+    self.columns = newColumns;
+    
+    // remove any columns that are empty now as well (right?)
+}
+
+- (NSArray*)neighborsOfColumnRow:(CVColumnRow*)aColumnRow {
+    NSMutableArray *array = [NSMutableArray new];
+    NSArray *col = self.columns[aColumnRow.column];
+    
+    // up
+    if (aColumnRow.row + 1 < col.count) {
+        [array addObject:[CVColumnRow columnRowWithColumn:aColumnRow.column row:aColumnRow.row + 1]];
+    }
+    // right
+    if (aColumnRow.column + 1 < self.columns.count && ((NSArray*)self.columns[aColumnRow.column + 1]).count > aColumnRow.row) {
+        [array addObject:[CVColumnRow columnRowWithColumn:aColumnRow.column + 1 row:aColumnRow.row]];
+    }
+    // down
+    if (aColumnRow.row > 0) {
+        [array addObject:[CVColumnRow columnRowWithColumn:aColumnRow.column row:aColumnRow.row - 1]];
+    }
+    // left
+    if (aColumnRow.column > 0 && ((NSArray*)self.columns[aColumnRow.column - 1]).count > aColumnRow.row) {
+        [array addObject:[CVColumnRow columnRowWithColumn:aColumnRow.column - 1 row:aColumnRow.row]];
+    }
+    return array;
 }
 
 

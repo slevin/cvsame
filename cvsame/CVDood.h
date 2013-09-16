@@ -15,9 +15,15 @@ typedef NS_ENUM(NSUInteger, CVDoodType) {
     kCVDoodTypeBike
 };
 
+typedef NS_ENUM(NSUInteger, CVDoodState) {
+    kCVDoodNormal,
+    kCVDoodDelete
+};
+
 @interface CVDood : MTLModel
 
 @property (nonatomic, assign) CVDoodType doodType;
+@property (nonatomic, assign) CVDoodState doodState;
 @property (nonatomic, assign) BOOL deleting;
 @property (nonatomic, readonly) NSString *textForType;
 

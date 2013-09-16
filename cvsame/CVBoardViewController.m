@@ -39,6 +39,7 @@
     self.boardLayout = [[CVBoardLayout alloc] initWithItemSize:40 doodSet:self.doodSet];
     self.board.collectionViewLayout = self.boardLayout;
     self.board.dataSource = self;
+    self.board.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +74,19 @@
     CVDood *dood = [self.doodSet doodForIndexPath:indexPath];
     label.text = dood.textForType;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger deleteCount = [self.doodSet tryRemoveAtIndexPath:indexPath];
+    if (deleteCount > 1) {
+        NSArray *deleteIndexes = [self.doodSet indexPathsOfDeletedDoods];
+        [collectionView performBatchUpdates:^{
+            [collectionView deleteItemsAtIndexPaths:deleteIndexes];
+            [self.doodSet removeDeletedDoods];
+        } completion:^(BOOL finished) {
+            ;
+        }];
+    }
 }
 
 @end
