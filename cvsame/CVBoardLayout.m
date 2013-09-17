@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) CGFloat itemSize;
 @property (nonatomic, strong) CVDoodSet *doodSet;
-@property (nonatomic, assign) CGSize lastContentSize;
+@property (nonatomic, strong) NSValue *lastContentSize;
 
 @end
 
@@ -29,16 +29,20 @@
 }
 
 - (CGSize)collectionViewContentSize {
-    CGFloat width = self.doodSet.numberOfColumns * self.itemSize;
-    CGFloat height = [self.doodSet maxDoodHeight] * self.itemSize;
-    CGSize contentSize = CGSizeMake(width, height);
-    self.lastContentSize = contentSize;
-    return contentSize;
+    if (self.lastContentSize) {
+        return [self.lastContentSize CGSizeValue];
+    } else {
+        CGFloat width = self.doodSet.numberOfColumns * self.itemSize;
+        CGFloat height = [self.doodSet maxDoodHeight] * self.itemSize;
+        CGSize contentSize = CGSizeMake(width, height);
+        self.lastContentSize = [NSValue valueWithCGSize:contentSize];
+        return contentSize;
+    }
 }
 
 - (NSArray*)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *layoutAttributes = [NSMutableArray new];
-    CGSize contentSize = self.lastContentSize;
+    CGSize contentSize = [self collectionViewContentSize];
     
     [self.doodSet enumerateDoods:^(CVDood *dood, NSInteger column, NSInteger row) {
         CGFloat x = column * self.itemSize;
@@ -59,7 +63,7 @@
     
     NSInteger column, row;
     [self.doodSet columnRowForDoodAtIndexPath:indexPath outColumn:&column outRow:&row];
-    CGSize contentSize = self.lastContentSize;
+    CGSize contentSize = [self collectionViewContentSize];
     CGFloat x = column * self.itemSize;
     CGFloat y = contentSize.height - ((row + 1) * self.itemSize);
     CGRect doodRect = CGRectMake(x, y, self.itemSize, self.itemSize);
