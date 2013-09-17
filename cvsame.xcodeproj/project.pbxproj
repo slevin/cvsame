@@ -28,6 +28,10 @@
 		73CEE8B317E01350005B4BCE /* CVBoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8B117E01350005B4BCE /* CVBoardViewController.xib */; };
 		73CEE8B517E01477005B4BCE /* CVDoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8B417E01477005B4BCE /* CVDoodCell.xib */; };
 		73CEE8B817E014EB005B4BCE /* CVBoardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CEE8B717E014EB005B4BCE /* CVBoardLayout.m */; };
+		73CEE8D017E7EE82005B4BCE /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8CC17E7EE82005B4BCE /* castle.png */; };
+		73CEE8D117E7EE82005B4BCE /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8CD17E7EE82005B4BCE /* group.png */; };
+		73CEE8D217E7EE82005B4BCE /* motorcycle.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8CE17E7EE82005B4BCE /* motorcycle.png */; };
+		73CEE8D317E7EE82005B4BCE /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = 73CEE8CF17E7EE82005B4BCE /* toilet.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		73CEE8B417E01477005B4BCE /* CVDoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVDoodCell.xib; sourceTree = "<group>"; };
 		73CEE8B617E014EB005B4BCE /* CVBoardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVBoardLayout.h; sourceTree = "<group>"; };
 		73CEE8B717E014EB005B4BCE /* CVBoardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVBoardLayout.m; sourceTree = "<group>"; };
+		73CEE8CC17E7EE82005B4BCE /* castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = castle.png; path = assets/castle.png; sourceTree = SOURCE_ROOT; };
+		73CEE8CD17E7EE82005B4BCE /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = group.png; path = assets/group.png; sourceTree = SOURCE_ROOT; };
+		73CEE8CE17E7EE82005B4BCE /* motorcycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = motorcycle.png; path = assets/motorcycle.png; sourceTree = SOURCE_ROOT; };
+		73CEE8CF17E7EE82005B4BCE /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toilet.png; path = assets/toilet.png; sourceTree = SOURCE_ROOT; };
 		D46DA3BEA8234443911709CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +142,7 @@
 		73CEE87A17E00B25005B4BCE /* cvsame */ = {
 			isa = PBXGroup;
 			children = (
+				73CEE8CB17E7EE68005B4BCE /* assets */,
 				73CEE8A917E01173005B4BCE /* CVDood.h */,
 				73CEE8AA17E01173005B4BCE /* CVDood.m */,
 				73CEE88317E00B25005B4BCE /* CVAppDelegate.h */,
@@ -182,6 +191,17 @@
 				73CEE89B17E00B25005B4BCE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73CEE8CB17E7EE68005B4BCE /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				73CEE8CC17E7EE82005B4BCE /* castle.png */,
+				73CEE8CD17E7EE82005B4BCE /* group.png */,
+				73CEE8CE17E7EE82005B4BCE /* motorcycle.png */,
+				73CEE8CF17E7EE82005B4BCE /* toilet.png */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +284,10 @@
 				73CEE88B17E00B25005B4BCE /* Default-568h@2x.png in Resources */,
 				73CEE8B317E01350005B4BCE /* CVBoardViewController.xib in Resources */,
 				73CEE8B517E01477005B4BCE /* CVDoodCell.xib in Resources */,
+				73CEE8D017E7EE82005B4BCE /* castle.png in Resources */,
+				73CEE8D117E7EE82005B4BCE /* group.png in Resources */,
+				73CEE8D217E7EE82005B4BCE /* motorcycle.png in Resources */,
+				73CEE8D317E7EE82005B4BCE /* toilet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, CVDoodState) {
 @property (nonatomic, assign) CVDoodState doodState;
 @property (nonatomic, assign) BOOL deleting;
 @property (nonatomic, readonly) NSString *textForType;
+@property (nonatomic, readonly) UIImage *imageForType;
 
 
 - (void)randomizeType;

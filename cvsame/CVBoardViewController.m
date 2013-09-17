@@ -70,10 +70,10 @@
 
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.board dequeueReusableCellWithReuseIdentifier:CELL_ID forIndexPath:indexPath];
-    UILabel *label = (UILabel*)[cell viewWithTag:100];
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:100];
     CVDood *dood = [self.doodSet doodForIndexPath:indexPath];
-    label.text = dood.textForType;
-    return cell;
+    imageView.image = [dood imageForType];
+    return cell; 
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
