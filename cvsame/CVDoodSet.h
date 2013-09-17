@@ -8,6 +8,9 @@
 
 #import "MTLModel.h"
 
+extern NSString* const DoodSetAllRemovedNotification;
+extern NSString* const DoodSetStuckNotification;
+
 @interface CVColumnRow : NSObject
 
 @property (nonatomic, assign) NSInteger column;

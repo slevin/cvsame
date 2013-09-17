@@ -13,11 +13,13 @@
 
 #define CELL_ID @"cellId"
 
-@interface CVBoardViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CVBoardViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *board;
 @property (nonatomic, strong) CVDoodSet *doodSet;
 @property (nonatomic, strong) CVBoardLayout *boardLayout;
+@property (nonatomic, strong) UIAlertView *allRemovedAlertView;
+@property (nonatomic, strong) UIAlertView *stuckAlertView;
 
 @end
 
@@ -44,8 +46,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self resetDoodSet];
-    [self.board reloadData];
+    [self resetBoard];
 }
 
 - (void)viewDidLoad
@@ -87,6 +88,27 @@
             ;
         }];
     }
+}
+
+- (void)handleAllRemovedNotification:(NSNotification*)aNotification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc] initWithTitle:@"Hooray" message:@"You won. Masterful job. Go again?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    });
+}
+
+- (void)handleStuckNotification:(NSNotification*)aNotification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[UIAlertView alloc] initWithTitle:@"Ouch" message:@"Looks like you are stuck. Try again?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    });
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self resetBoard];
+}
+
+- (void)resetBoard {
+    [self resetDoodSet];
+    [self.board reloadData];
 }
 
 @end

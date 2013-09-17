@@ -9,6 +9,8 @@
 #import "CVDoodSet.h"
 #import "CVDood.h"
 
+NSString* const DoodSetAllRemovedNotification = @"allRemoved";
+NSString* const DoodSetStuckNotification = @"stuck";
 
 @implementation CVColumnRow
 
@@ -192,6 +194,10 @@
 
     [newColumns removeObjectsAtIndexes:emptyColumns];
     self.columns = newColumns;
+    
+    if (self.columns.count == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DoodSetAllRemovedNotification object:self];
+    }
     
 }
 
