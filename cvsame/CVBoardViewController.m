@@ -29,14 +29,21 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAllRemovedNotification:) name:DoodSetAllRemovedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStuckNotification:) name:DoodSetStuckNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)resetDoodSet {
     
     CVDoodSet *doodSet = [[CVDoodSet alloc] initWithColumnCount:8];
     self.doodSet = doodSet;
+    [self.board reloadData];
     
     self.boardLayout = [[CVBoardLayout alloc] initWithItemSize:40 doodSet:self.doodSet];
     self.board.collectionViewLayout = self.boardLayout;
@@ -85,7 +92,7 @@
             [collectionView deleteItemsAtIndexPaths:deleteIndexes];
             [self.doodSet removeDeletedDoods];
         } completion:^(BOOL finished) {
-            ;
+            [self.doodSet testRemoveableDoodsRemaining];
         }];
     }
 }

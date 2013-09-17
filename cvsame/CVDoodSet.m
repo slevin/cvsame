@@ -32,6 +32,21 @@ NSString* const DoodSetStuckNotification = @"stuck";
 
 @implementation CVDoodSet
 
+- (instancetype)initWithDoodSet:(CVDoodSet*)aDoodSet {
+    if ((self = [super init])) {
+        NSMutableArray *newColumns = [NSMutableArray new];
+        for (NSArray *oldCol in aDoodSet.columns) {
+            NSMutableArray *newCol = [NSMutableArray new];
+            for (CVDood *oldDood in oldCol) {
+                [newCol addObject:[oldDood copy]];
+            }
+            [newColumns addObject:newCol];
+        }
+        self.columns = [newColumns copy];
+    }
+    return self;
+}
+
 - (instancetype)initWithColumnCount:(NSInteger)aColumnCount {
     if ((self = [super init])) {
         [self loadWithRandomDoods:aColumnCount];
@@ -43,7 +58,7 @@ NSString* const DoodSetStuckNotification = @"stuck";
     NSMutableArray *columns = [NSMutableArray new];
     for (int i = 0; i < aColumnCount; i++) {
         NSMutableArray *newColumn = [NSMutableArray new];
-        NSInteger randomHeight = arc4random_uniform(10) + 10;
+        NSInteger randomHeight = arc4random_uniform(10) + 5;
         for (int j = 0; j < randomHeight; j++) {
             CVDood *dood = [[CVDood alloc] init];
             [dood randomizeType];
@@ -133,6 +148,37 @@ NSString* const DoodSetStuckNotification = @"stuck";
         dood.doodState = kCVDoodNormal;
     }];
     self.deleteCount = 0;
+}
+
+- (void)testRemoveableDoodsRemaining {
+    BOOL anyLeft = [self removeableDoodsRemaining];
+    if (anyLeft == NO) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DoodSetStuckNotification object:self];
+    }
+}
+
+- (BOOL)removeableDoodsRemaining {
+    NSInteger item = 0;
+    BOOL outerFoundRemovable = NO;
+    for (NSArray *col in self.columns) {
+        BOOL foundRemovable = NO;
+        for (CVDood *dood in col) {
+            CVDoodSet *doodSetCopy = [self copy];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+            NSInteger deleteCount = [doodSetCopy tryRemoveAtIndexPath:indexPath];
+            if (deleteCount > 1) {
+                foundRemovable = YES;
+                break;
+            } else {
+                item++;
+            }
+        }
+        if (foundRemovable) {
+            outerFoundRemovable = YES;
+            break;
+        }
+    }
+    return outerFoundRemovable;
 }
 
 - (NSInteger)tryRemoveAtIndexPath:(NSIndexPath*)anIndexPath {

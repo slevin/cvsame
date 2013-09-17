@@ -15,6 +15,7 @@ extern NSString* const DoodSetStuckNotification;
 
 @property (nonatomic, assign) NSInteger column;
 @property (nonatomic, assign) NSInteger row;
+@property (nonatomic, strong, readonly) NSArray *columns;
 
 + (instancetype)columnRowWithColumn:(NSInteger)aColumn row:(NSInteger)aRow;
 
@@ -41,5 +42,8 @@ extern NSString* const DoodSetStuckNotification;
 - (NSInteger)tryRemoveAtIndexPath:(NSIndexPath*)anIndexPath;
 - (NSArray*)indexPathsOfDeletedDoods;
 - (void)removeDeletedDoods;
+
+/// test if we can remove any more
+- (void)testRemoveableDoodsRemaining;
 
 @end

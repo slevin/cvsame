@@ -11,6 +11,13 @@
 @implementation CVDood
 
 
+- (CVDood*)copy {
+    CVDood *newDood = [CVDood new];
+    newDood.doodType = self.doodType;
+    newDood.doodState = self.doodState;
+    return newDood;
+}
+
 - (void)randomizeType {
     NSInteger typeNumber = arc4random_uniform(4);
     self.doodType = (CVDoodType)typeNumber;
