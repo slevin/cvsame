@@ -20,6 +20,7 @@
 @property (nonatomic, strong) CVBoardLayout *boardLayout;
 @property (nonatomic, strong) UIAlertView *allRemovedAlertView;
 @property (nonatomic, strong) UIAlertView *stuckAlertView;
+@property (nonatomic, assign) BOOL wonBoard;
 
 @end
 
@@ -40,6 +41,7 @@
 }
 
 - (void)resetDoodSet {
+    self.wonBoard = NO;
     
     CVDoodSet *doodSet = [[CVDoodSet alloc] initWithColumnCount:8];
     self.doodSet = doodSet;
@@ -98,12 +100,17 @@
 }
 
 - (void)handleAllRemovedNotification:(NSNotification*)aNotification {
+    self.wonBoard = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[[UIAlertView alloc] initWithTitle:@"Hooray" message:@"You won. Masterful job. Go again?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     });
 }
 
 - (void)handleStuckNotification:(NSNotification*)aNotification {
+    if (self.wonBoard == YES) {
+        return;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [[[UIAlertView alloc] initWithTitle:@"Ouch" message:@"Looks like you are stuck. Try again?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     });
